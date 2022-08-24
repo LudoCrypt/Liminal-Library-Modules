@@ -7,7 +7,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import net.ludocrypt.limlib.effects.render.SkyEffects;
+import net.ludocrypt.limlib.effects.render.sky.SkyEffects;
 import net.minecraft.client.render.SkyProperties;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;

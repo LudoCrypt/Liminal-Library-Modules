@@ -12,7 +12,14 @@ loom {
 }
 
 repositories {
-
+	maven {
+		name = 'Ladysnake Mods'
+		url = 'https://ladysnake.jfrog.io/artifactory/mods'
+		content {
+			includeGroup 'io.github.ladysnake'
+			includeGroupByRegex 'io\\.github\\.onyxstudios.*'
+        }
+    }
 }
 
 dependencies {
@@ -23,6 +30,8 @@ dependencies {
 	modImplementation libs.quilt.loader
 
 	modImplementation libs.quilted.fabric.api
+	
+	modImplementation libs.ladysnake.satin
 }
 
 processResources {

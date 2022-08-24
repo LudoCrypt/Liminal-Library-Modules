@@ -1,4 +1,4 @@
-package net.ludocrypt.limlib.effects.render;
+package net.ludocrypt.limlib.effects.render.sky;
 
 import java.util.Optional;
 

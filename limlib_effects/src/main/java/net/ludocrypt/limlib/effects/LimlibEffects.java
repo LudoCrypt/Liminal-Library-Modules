@@ -3,9 +3,9 @@ package net.ludocrypt.limlib.effects;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
-import net.ludocrypt.limlib.effects.render.EmptySkyEffects;
-import net.ludocrypt.limlib.effects.render.SkyEffects;
-import net.ludocrypt.limlib.effects.render.StaticSkyEffects;
+import net.ludocrypt.limlib.effects.render.sky.EmptySkyEffects;
+import net.ludocrypt.limlib.effects.render.sky.SkyEffects;
+import net.ludocrypt.limlib.effects.render.sky.StaticSkyEffects;
 import net.ludocrypt.limlib.effects.sound.distortion.DistortionEffect;
 import net.ludocrypt.limlib.effects.sound.distortion.StaticDistortionEffect;
 import net.ludocrypt.limlib.effects.sound.reverb.ReverbEffect;

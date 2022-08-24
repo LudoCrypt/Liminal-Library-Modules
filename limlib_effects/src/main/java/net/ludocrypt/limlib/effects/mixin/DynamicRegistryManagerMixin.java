@@ -12,7 +12,8 @@ import com.google.common.collect.ImmutableMap;
 import com.google.common.collect.ImmutableMap.Builder;
 import com.mojang.serialization.Codec;
 
-import net.ludocrypt.limlib.effects.render.SkyEffects;
+import net.ludocrypt.limlib.effects.render.post.PostEffect;
+import net.ludocrypt.limlib.effects.render.sky.SkyEffects;
 import net.ludocrypt.limlib.effects.sound.SoundEffects;
 import net.minecraft.util.registry.DynamicRegistryManager;
 import net.minecraft.util.registry.Registry;
@@ -25,6 +26,7 @@ public abstract class DynamicRegistryManagerMixin {
 	private static void limlib$addRegistries(CallbackInfoReturnable<ImmutableMap<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>>> ci, Builder<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>> builder) {
 		register(builder, SoundEffects.SOUND_EFFECTS_KEY, SoundEffects.CODEC);
 		register(builder, SkyEffects.SKY_EFFECTS_KEY, SkyEffects.CODEC);
+		register(builder, PostEffect.POST_EFFECT_KEY, PostEffect.CODEC);
 	}
 
 	@Shadow

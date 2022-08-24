@@ -9,6 +9,7 @@
 		"RegistryAccessor"
 	],
 	"client": [
+		"GameRendererMixin",
 		"SkyPropertiesMixin",
 		"SoundSystemMixin",
 		"SourceAccessor"

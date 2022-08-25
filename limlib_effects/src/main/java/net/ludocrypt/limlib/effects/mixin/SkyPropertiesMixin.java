@@ -18,11 +18,14 @@ public class SkyPropertiesMixin {
 
 	@Inject(method = "Lnet/minecraft/client/render/SkyProperties;byDimensionType(Lnet/minecraft/world/dimension/DimensionType;)Lnet/minecraft/client/render/SkyProperties;", at = @At("HEAD"), cancellable = true)
 	private static void limlib$byDimensionType(DimensionType dimensionType, CallbackInfoReturnable<SkyProperties> ci) {
-		Optional<RegistryKey<DimensionType>> key = BuiltinRegistries.DIMENSION_TYPE.getKey(dimensionType);
-		if (key.isPresent()) {
-			Optional<SkyEffects> sky = SkyEffects.SKY_EFFECTS.getOrEmpty(key.get().getValue());
-			if (sky.isPresent()) {
-				ci.setReturnValue(sky.get().getMemoizedSkyProperties().get());
+		Optional<DimensionType> effectsDimension = BuiltinRegistries.DIMENSION_TYPE.getOrEmpty(dimensionType.effectsLocation());
+		if (effectsDimension.isPresent()) {
+			Optional<RegistryKey<DimensionType>> key = BuiltinRegistries.DIMENSION_TYPE.getKey(effectsDimension.get());
+			if (key.isPresent()) {
+				Optional<SkyEffects> sky = SkyEffects.SKY_EFFECTS.getOrEmpty(key.get().getValue());
+				if (sky.isPresent()) {
+					ci.setReturnValue(sky.get().getMemoizedSkyProperties().get());
+				}
 			}
 		}
 	}

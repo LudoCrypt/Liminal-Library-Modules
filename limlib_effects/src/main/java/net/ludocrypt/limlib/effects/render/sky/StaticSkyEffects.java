@@ -49,7 +49,7 @@ public class StaticSkyEffects extends SkyEffects {
 
 		@Override
 		public Vec3d adjustFogColor(Vec3d color, float sunHeight) {
-			return null;
+			return color;
 		}
 
 		@Override

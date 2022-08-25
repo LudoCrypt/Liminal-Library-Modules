@@ -13,7 +13,7 @@ import net.minecraft.client.render.BackgroundRenderer;
 @Mixin(BackgroundRenderer.class)
 public abstract class BackgroundRendererMixin {
 
-	@ModifyVariable(method = "render", at = @At(value = "STORE", ordinal = 4), ordinal = 2)
+	@ModifyVariable(method = "render", at = @At(value = "STORE", ordinal = 3), ordinal = 2)
 	private static float limlib$modifySkyColor(float in) {
 		MinecraftClient client = MinecraftClient.getInstance();
 

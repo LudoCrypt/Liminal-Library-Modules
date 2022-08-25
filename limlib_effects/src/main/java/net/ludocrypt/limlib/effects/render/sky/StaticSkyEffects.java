@@ -2,6 +2,8 @@ package net.ludocrypt.limlib.effects.render.sky;
 
 import java.util.Optional;
 
+import com.google.common.base.Supplier;
+import com.google.common.base.Suppliers;
 import com.mojang.serialization.Codec;
 import com.mojang.serialization.codecs.RecordCodecBuilder;
 
@@ -42,6 +44,21 @@ public class StaticSkyEffects extends SkyEffects {
 	private final boolean darkened;
 	private final boolean thickFog;
 
+	@Environment(EnvType.CLIENT)
+	private final Supplier<SkyProperties> memoizedSkyProperties = Suppliers.memoize(() -> new SkyProperties(this.getCloudHeight(), this.hasAlternateSkyColor(), SkyType.valueOf(this.getSkyType()), this.shouldBrightenLighting(), this.isDarkened()) {
+
+		@Override
+		public Vec3d adjustFogColor(Vec3d color, float sunHeight) {
+			return null;
+		}
+
+		@Override
+		public boolean useThickFog(int camX, int camY) {
+			return StaticSkyEffects.this.hasThickFog();
+		}
+
+	});
+
 	public StaticSkyEffects(Optional<Float> cloudHeight, boolean alternateSkyColor, String skyType, boolean brightenLighting, boolean darkened, boolean thickFog) {
 		this.cloudHeight = cloudHeight;
 		this.alternateSkyColor = alternateSkyColor;
@@ -81,20 +98,8 @@ public class StaticSkyEffects extends SkyEffects {
 
 	@Override
 	@Environment(EnvType.CLIENT)
-	public SkyProperties toClientSkyProperties() {
-		return new SkyProperties(this.getCloudHeight(), this.alternateSkyColor, SkyType.valueOf(this.getSkyType()), this.shouldBrightenLighting(), this.isDarkened()) {
-
-			@Override
-			public Vec3d adjustFogColor(Vec3d color, float sunHeight) {
-				return null;
-			}
-
-			@Override
-			public boolean useThickFog(int camX, int camY) {
-				return StaticSkyEffects.this.hasThickFog();
-			}
-
-		};
+	public Supplier<SkyProperties> getMemoizedSkyProperties() {
+		return memoizedSkyProperties;
 	}
 
 }

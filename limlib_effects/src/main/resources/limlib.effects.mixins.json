@@ -9,6 +9,8 @@
 		"RegistryAccessor"
 	],
 	"client": [
+		"BackgroundRendererMixin",
+		"ClientWorldMixin",
 		"GameRendererMixin",
 		"MinecraftClientMixin",
 		"SkyPropertiesMixin",

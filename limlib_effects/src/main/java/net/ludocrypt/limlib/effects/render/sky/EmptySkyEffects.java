@@ -16,7 +16,7 @@ public class EmptySkyEffects extends StaticSkyEffects {
 	public static final Codec<EmptySkyEffects> CODEC = RecordCodecBuilder.create((instance) -> instance.stable(new EmptySkyEffects()));
 
 	public EmptySkyEffects() {
-		super(Optional.empty(), false, "NONE", false, false, false);
+		super(Optional.empty(), false, "NONE", false, false, false, 1.0F);
 	}
 
 	@Override

@@ -34,6 +34,8 @@ public class StaticSkyEffects extends SkyEffects {
 			return effects.darkened;
 		}), Codec.BOOL.fieldOf("thick_fog").stable().forGetter((effects) -> {
 			return effects.thickFog;
+		}), Codec.FLOAT.fieldOf("sky_shading").stable().forGetter((effects) -> {
+			return effects.skyShading;
 		})).apply(instance, instance.stable(StaticSkyEffects::new));
 	});
 
@@ -43,6 +45,7 @@ public class StaticSkyEffects extends SkyEffects {
 	private final boolean brightenLighting;
 	private final boolean darkened;
 	private final boolean thickFog;
+	private final float skyShading;
 
 	@Environment(EnvType.CLIENT)
 	private final Supplier<SkyProperties> memoizedSkyProperties = Suppliers.memoize(() -> new SkyProperties(this.getCloudHeight(), this.hasAlternateSkyColor(), SkyType.valueOf(this.getSkyType()), this.shouldBrightenLighting(), this.isDarkened()) {
@@ -59,13 +62,14 @@ public class StaticSkyEffects extends SkyEffects {
 
 	});
 
-	public StaticSkyEffects(Optional<Float> cloudHeight, boolean alternateSkyColor, String skyType, boolean brightenLighting, boolean darkened, boolean thickFog) {
+	public StaticSkyEffects(Optional<Float> cloudHeight, boolean alternateSkyColor, String skyType, boolean brightenLighting, boolean darkened, boolean thickFog, float skyShading) {
 		this.cloudHeight = cloudHeight;
 		this.alternateSkyColor = alternateSkyColor;
 		this.skyType = skyType;
 		this.brightenLighting = brightenLighting;
 		this.darkened = darkened;
 		this.thickFog = thickFog;
+		this.skyShading = skyShading;
 	}
 
 	public Codec<? extends SkyEffects> getCodec() {
@@ -100,6 +104,11 @@ public class StaticSkyEffects extends SkyEffects {
 	@Environment(EnvType.CLIENT)
 	public Supplier<SkyProperties> getMemoizedSkyProperties() {
 		return memoizedSkyProperties;
+	}
+
+	@Override
+	public float getSkyShading() {
+		return skyShading;
 	}
 
 }

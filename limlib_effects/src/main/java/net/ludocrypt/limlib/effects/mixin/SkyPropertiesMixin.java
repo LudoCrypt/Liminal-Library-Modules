@@ -9,7 +9,6 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import net.ludocrypt.limlib.effects.render.sky.SkyEffects;
 import net.minecraft.client.render.SkyProperties;
-import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionType;
 
@@ -18,9 +17,8 @@ public class SkyPropertiesMixin {
 
 	@Inject(method = "Lnet/minecraft/client/render/SkyProperties;byDimensionType(Lnet/minecraft/world/dimension/DimensionType;)Lnet/minecraft/client/render/SkyProperties;", at = @At("HEAD"), cancellable = true)
 	private static void limlib$byDimensionType(DimensionType dimensionType, CallbackInfoReturnable<SkyProperties> ci) {
-		Optional<DimensionType> effectsDimension = BuiltinRegistries.DIMENSION_TYPE.getOrEmpty(dimensionType.effectsLocation());
-		if (effectsDimension.isPresent()) {
-			Optional<RegistryKey<DimensionType>> key = BuiltinRegistries.DIMENSION_TYPE.getKey(effectsDimension.get());
+		if (SkyEffects.tempHolder != null) {
+			Optional<RegistryKey<DimensionType>> key = SkyEffects.tempHolder.getKey();
 			if (key.isPresent()) {
 				Optional<SkyEffects> sky = SkyEffects.SKY_EFFECTS.getOrEmpty(key.get().getValue());
 				if (sky.isPresent()) {
@@ -28,6 +26,7 @@ public class SkyPropertiesMixin {
 				}
 			}
 		}
+		SkyEffects.tempHolder = null;
 	}
 
 }

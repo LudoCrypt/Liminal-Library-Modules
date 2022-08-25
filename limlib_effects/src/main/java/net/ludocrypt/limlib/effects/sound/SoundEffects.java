@@ -9,6 +9,7 @@ import net.ludocrypt.limlib.effects.mixin.BuiltinRegistriesAccessor;
 import net.ludocrypt.limlib.effects.mixin.RegistryAccessor;
 import net.ludocrypt.limlib.effects.sound.distortion.DistortionEffect;
 import net.ludocrypt.limlib.effects.sound.reverb.ReverbEffect;
+import net.minecraft.sound.MusicSound;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.registry.BuiltinRegistries;
 import net.minecraft.util.registry.Registry;
@@ -24,19 +25,23 @@ public class SoundEffects {
 			return soundEffects.reverb;
 		}), DistortionEffect.CODEC.optionalFieldOf("distortion").stable().forGetter((soundEffects) -> {
 			return soundEffects.distortion;
+		}), MusicSound.CODEC.optionalFieldOf("music").stable().forGetter((soundEffects) -> {
+			return soundEffects.music;
 		})).apply(instance, instance.stable(SoundEffects::new));
 	});
 
 	private final Optional<ReverbEffect> reverb;
 	private final Optional<DistortionEffect> distortion;
+	private final Optional<MusicSound> music;
 
 	public SoundEffects() {
-		this(Optional.empty(), Optional.empty());
+		this(Optional.empty(), Optional.empty(), Optional.empty());
 	}
 
-	public SoundEffects(Optional<ReverbEffect> reverb, Optional<DistortionEffect> distortion) {
+	public SoundEffects(Optional<ReverbEffect> reverb, Optional<DistortionEffect> distortion, Optional<MusicSound> music) {
 		this.reverb = reverb;
 		this.distortion = distortion;
+		this.music = music;
 	}
 
 	public Optional<ReverbEffect> getReverb() {
@@ -45,6 +50,10 @@ public class SoundEffects {
 
 	public Optional<DistortionEffect> getDistortion() {
 		return distortion;
+	}
+
+	public Optional<MusicSound> getMusic() {
+		return music;
 	}
 
 }

@@ -41,5 +41,19 @@
 		]
 	},
 	"mixin": "limlib.effects.mixins.json",
-	"access_widener": "limlib_effects.accesswidener"
+	"access_widener": "limlib_effects.accesswidener",
+	"modmenu": {
+		"badges": [
+			"library"
+		],
+		"parent": {
+			"id": "limlib",
+			"name": "Liminal Library",
+			"description": "A library to help out with all things Liminal",
+			"icon": "assets/limlib_effects/icon.png",
+			"badges": [
+				"library"
+			]
+		}
+	}
 }

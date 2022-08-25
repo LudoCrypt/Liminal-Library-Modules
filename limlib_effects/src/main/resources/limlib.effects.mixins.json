@@ -10,6 +10,7 @@
 	],
 	"client": [
 		"GameRendererMixin",
+		"MinecraftClientMixin",
 		"SkyPropertiesMixin",
 		"SoundSystemMixin",
 		"SourceAccessor"

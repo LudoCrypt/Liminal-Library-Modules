@@ -3,6 +3,9 @@ package net.ludocrypt.limlib.effects;
 import org.quiltmc.loader.api.ModContainer;
 import org.quiltmc.qsl.base.api.entrypoint.ModInitializer;
 
+import net.ludocrypt.limlib.effects.render.post.EmptyPostEffect;
+import net.ludocrypt.limlib.effects.render.post.PostEffect;
+import net.ludocrypt.limlib.effects.render.post.StaticPostEffect;
 import net.ludocrypt.limlib.effects.render.sky.EmptySkyEffects;
 import net.ludocrypt.limlib.effects.render.sky.SkyEffects;
 import net.ludocrypt.limlib.effects.render.sky.StaticSkyEffects;
@@ -22,6 +25,9 @@ public class LimlibEffects implements ModInitializer {
 
 		Registry.register(SkyEffects.SKY_EFFECTS_CODEC, new Identifier("limlib", "static"), StaticSkyEffects.CODEC);
 		Registry.register(SkyEffects.SKY_EFFECTS_CODEC, new Identifier("limlib", "empty"), EmptySkyEffects.CODEC);
+
+		Registry.register(PostEffect.POST_EFFECT_CODEC, new Identifier("limlib", "static"), StaticPostEffect.CODEC);
+		Registry.register(PostEffect.POST_EFFECT_CODEC, new Identifier("limlib", "empty"), EmptyPostEffect.CODEC);
 	}
 
 }

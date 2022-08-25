@@ -15,7 +15,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 import net.minecraft.world.dimension.DimensionOptions;
 
-@Mixin(targets = "net/minecraft/world/GeneratorTypes$Bootstrap")
+@Mixin(targets = "net/minecraft/client/world/GeneratorTypes$Bootstrap")
 public class GeneratorTypesBootstrapMixin {
 
 	@Inject(method = "Lnet/minecraft/client/world/GeneratorTypes$Bootstrap;createType(Lnet/minecraft/world/dimension/DimensionOptions;)Lnet/minecraft/client/world/GeneratorType;", at = @At("RETURN"))

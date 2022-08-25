@@ -13,7 +13,7 @@ import net.minecraft.util.registry.BuiltinRegistries;
 @Mixin(BuiltinRegistries.class)
 public class BuiltinRegistriesMixin {
 
-	@Inject(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/registry/SimpleRegistry;<init>(Lnet/minecraft/util/registry/RegistryKey;Lcom/mojang/serialization/Lifecycle;Ljava/util/function/Function;)V", ordinal = 0, shift = Shift.BEFORE))
+	@Inject(method = "<clinit>", at = @At(value = "INVOKE", target = "Lnet/minecraft/util/registry/BuiltinRegistries;addRegistry(Lnet/minecraft/util/registry/RegistryKey;Lnet/minecraft/util/registry/BuiltinRegistries$RegistryBootstrap;)Lnet/minecraft/util/registry/Registry;", ordinal = 0, shift = Shift.BEFORE))
 	private static void limlib$clinit(CallbackInfo ci) {
 		QuiltLoader.getEntrypoints(PreRegistration.ENTRYPOINT_KEY, PreRegistration.class).forEach(PreRegistration::register);
 	}

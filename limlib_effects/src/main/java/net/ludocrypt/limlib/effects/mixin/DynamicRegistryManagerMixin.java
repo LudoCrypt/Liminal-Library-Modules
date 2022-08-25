@@ -20,7 +20,7 @@ import net.minecraft.util.registry.Registry;
 import net.minecraft.util.registry.RegistryKey;
 
 @Mixin(DynamicRegistryManager.class)
-public abstract class DynamicRegistryManagerMixin {
+public interface DynamicRegistryManagerMixin {
 
 	@Inject(method = "Lnet/minecraft/util/registry/DynamicRegistryManager;method_30531()Lcom/google/common/collect/ImmutableMap;", at = @At(value = "RETURN", shift = Shift.BEFORE), locals = LocalCapture.CAPTURE_FAILHARD)
 	private static void limlib$addRegistries(CallbackInfoReturnable<ImmutableMap<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>>> ci, Builder<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>> builder) {
@@ -30,6 +30,8 @@ public abstract class DynamicRegistryManagerMixin {
 	}
 
 	@Shadow
-	private native static <E> void register(Builder<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>> infosBuilder, RegistryKey<? extends Registry<E>> registryRef, Codec<E> entryCodec);
+	private static <E> void register(Builder<RegistryKey<? extends Registry<?>>, DynamicRegistryManager.Info<?>> infosBuilder, RegistryKey<? extends Registry<E>> registryRef, Codec<E> entryCodec) {
+		throw new UnsupportedOperationException();
+	}
 
 }

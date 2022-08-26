@@ -8,7 +8,8 @@
 		"BuiltinRegistriesMixin",
 		"GeneratorTypeAccessor",
 		"GeneratorTypesBootstrapMixin",
-		"LevelStorageMixin"
+		"LevelStorageMixin",
+		"ServerPlayerEntityMixin"
 	],
 	"injectors": {
 		"defaultRequire": 1

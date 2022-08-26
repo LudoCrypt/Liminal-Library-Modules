@@ -1,16 +1,15 @@
 package net.ludocrypt.limlib.world.maze;
 
-import java.util.Random;
-
 import com.mojang.datafixers.util.Pair;
 
 import net.ludocrypt.limlib.world.maze.MazeComponent.CellState;
 import net.minecraft.util.BlockRotation;
+import net.minecraft.util.random.RandomGenerator;
 
 public enum RectangularMazePiece {
 	T_PIECE, F_PIECE, I_PIECE, L_PIECE, NUB, BLANK;
 
-	public static Pair<RectangularMazePiece, BlockRotation> getFromCell(CellState state, Random random) {
+	public static Pair<RectangularMazePiece, BlockRotation> getFromCell(CellState state, RandomGenerator random) {
 
 		RectangularMazePiece piece = RectangularMazePiece.BLANK;
 		BlockRotation rotation = BlockRotation.NONE;

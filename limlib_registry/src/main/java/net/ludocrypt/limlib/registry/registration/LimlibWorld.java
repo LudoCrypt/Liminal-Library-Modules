@@ -11,7 +11,7 @@ import net.minecraft.world.dimension.DimensionOptions;
 import net.minecraft.world.dimension.DimensionType;
 
 /**
- * A seperate implementation of a world and dimension.
+ * A separate implementation of a world and dimension.
  */
 public class LimlibWorld {
 

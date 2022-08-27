@@ -26,6 +26,7 @@ import net.minecraft.resource.ResourceManager;
 import net.minecraft.util.BlockRotation;
 import net.minecraft.util.Identifier;
 import net.minecraft.util.math.BlockPos;
+import net.minecraft.util.math.Direction;
 import net.minecraft.util.math.MathHelper;
 import net.minecraft.util.math.Vec3d;
 import net.minecraft.world.ChunkRegion;
@@ -158,6 +159,12 @@ public class NbtPlacerUtil {
 			rotationList.add(NbtFloat.of(entityRotationList.getFloat(1)));
 			nbt.remove("Rotation");
 			nbt.put("Rotation", rotationList);
+
+			if (nbt.contains("facing")) {
+				Direction dir = rotation.rotate(Direction.fromHorizontal(nbt.getByte("facing")));
+				nbt.remove("facing");
+				nbt.putByte("facing", (byte) dir.getHorizontal());
+			}
 
 			getEntity(region, nbt).ifPresent((entity) -> {
 				entity.refreshPositionAndAngles(realPosition.x, realPosition.y, realPosition.z, yawRotation, entity.getPitch());

@@ -152,6 +152,15 @@ public class NbtPlacerUtil {
 			posList.add(NbtDouble.of(realPosition.z));
 			nbt.put("Pos", posList);
 
+			if (nbt.contains("TileX", 99) && nbt.contains("TileY", 99) && nbt.contains("TileZ", 99)) {
+				nbt.remove("TileX");
+				nbt.remove("TileY");
+				nbt.remove("TileZ");
+				nbt.putInt("TileX", (int) Math.floor(realPosition.x));
+				nbt.putInt("TileY", (int) Math.floor(realPosition.y));
+				nbt.putInt("TileZ", (int) Math.floor(realPosition.z));
+			}
+
 			NbtList rotationList = new NbtList();
 			NbtList entityRotationList = nbt.getList("Rotation", 5);
 			float yawRotation = applyRotation(entityRotationList.getFloat(0), rotation);

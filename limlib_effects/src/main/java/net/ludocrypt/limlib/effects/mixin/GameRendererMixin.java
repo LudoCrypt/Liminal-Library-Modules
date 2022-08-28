@@ -14,7 +14,7 @@ import net.ludocrypt.limlib.effects.render.post.PostEffect;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.render.GameRenderer;
 
-@Mixin(GameRenderer.class)
+@Mixin(value = GameRenderer.class, priority = 1500)
 public class GameRendererMixin {
 
 	@Shadow

@@ -5,6 +5,8 @@ quilt_loader = "0.17.1"
 
 quilted_fabric_api = "4.0.0-beta.7+0.59.0-1.19.2"
 ladysnake_satin = "1.9.0"
+modrinth_iris = "1.19.x-v1.2.7"
+modrinth_sodium = "mc1.19.2-0.4.3"
 
 [libraries]
 minecraft = { module = "com.mojang:minecraft", version.ref = "minecraft" }
@@ -15,6 +17,8 @@ quilted_fabric_api = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-a
 quilted_fabric_api_deprecated = { module = "org.quiltmc.quilted-fabric-api:quilted-fabric-api-deprecated", version.ref = "quilted_fabric_api" }
 
 ladysnake_satin = { module = "io.github.ladysnake:satin", version.ref = "ladysnake_satin" }
+modrinth_iris = { module = "maven.modrinth:iris", version.ref = "modrinth_iris" }
+modrinth_sodium = { module = "maven.modrinth:sodium", version.ref = "modrinth_sodium" }
 
 [bundles]
 quilted_fabric_api = ["quilted_fabric_api", "quilted_fabric_api_deprecated"]
